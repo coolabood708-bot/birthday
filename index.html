@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday RORO 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --rose:      #c8586c;
+  --rose-light:#e8a0b0;
+  --blush:     #fce8f0;
+  --petal:     #fdf4f7;
+  --cream:     #fffbfc;
+  --text:      #3d1a24;
+  --muted:     #9e6070;
+  --white:     #ffffff;
+  --shadow:    rgba(200,88,108,0.12);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+#petals { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.petal { position:absolute; top:-40px; animation: petalFall linear infinite; opacity:0.55; font-size:1rem; }
+@keyframes petalFall {
+  0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity:.6; }
+  50%  { transform: translateY(50vh) rotate(180deg) translateX(20px); }
+  100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity:0; }
+}
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 3rem 2rem; position: relative; overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #fce0ea 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 100% 100%, #fde8f2 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 0% 80%, #fceef4 0%, transparent 50%),
+    var(--cream);
+}
+.hero-inner { position:relative; z-index:1; }
+.hero-date { font-weight:200; letter-spacing:6px; font-size:.72rem; text-transform:uppercase; color:var(--rose-light); margin-bottom:1.8rem; }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(3rem,10vw,6.5rem); line-height:1; color:var(--text); }
+.hero h1 em {
+  font-style:italic; font-weight:600; display:block;
+  font-size:clamp(5rem,18vw,12rem);
+  background:linear-gradient(135deg,#c8586c 0%,#e8a0b0 50%,#c8586c 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  letter-spacing:-3px; line-height:0.9; margin:.2rem 0 .5rem;
+}
+.hero-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:1.35rem; color:var(--muted); margin-top:1rem; opacity:0; animation:riseUp .9s ease .7s forwards; }
+.hero-scroll { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.4rem; color:var(--rose-light); font-size:.62rem; letter-spacing:3px; text-transform:uppercase; animation:bounce 2s ease-in-out infinite; }
+.hero-scroll svg { width:18px; height:18px; stroke:var(--rose-light); fill:none; stroke-width:1.5; }
+@keyframes riseUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+.nav-dots { position:fixed; right:1.5rem; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:.6rem; z-index:100; }
+.nav-dot { width:8px; height:8px; border-radius:50%; background:var(--rose-light); opacity:.35; cursor:pointer; transition:opacity .2s,transform .2s; border:none; }
+.nav-dot.active { opacity:1; transform:scale(1.5); background:var(--rose); }
+.section { max-width:900px; margin:0 auto; padding:5rem 2rem; }
+.section-eyebrow { font-weight:200; font-size:.68rem; letter-spacing:5px; text-transform:uppercase; color:var(--rose); margin-bottom:.5rem; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3rem); font-weight:400; line-height:1.15; color:var(--text); }
+.section-title em { font-style:italic; color:var(--rose); }
+.section-divider { width:60px; height:2px; background:linear-gradient(90deg,var(--rose),transparent); margin:1.2rem 0 2.5rem; }
+.love-letter { background:var(--white); border-radius:24px; padding:3rem 3.5rem; box-shadow:0 8px 60px var(--shadow); position:relative; overflow:hidden; }
+.love-letter::before { content:'❝'; position:absolute; top:.5rem; left:2rem; font-family:'Cormorant Garamond',serif; font-size:9rem; line-height:1; color:var(--blush); z-index:0; }
+.love-letter-body { position:relative; z-index:1; }
+.love-letter p { font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:300; line-height:1.9; color:var(--text); font-style:italic; }
+.love-letter-sig { margin-top:2rem; display:flex; align-items:center; gap:1rem; }
+.sig-line { flex:1; height:1px; background:var(--blush); }
+.love-letter-sig span { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--rose); white-space:nowrap; }
+.sep { border-top:1px solid var(--blush); }
+
+/* ── MEDIA TABS ── */
+.media-tabs {
+  display: flex; gap: .5rem; margin-bottom: 2rem;
+}
+.tab-btn {
+  flex: 1; padding: .7rem 1rem;
+  border: 1px solid var(--rose-light);
+  border-radius: 50px; background: transparent;
+  font-family: 'Jost', sans-serif; font-size: .78rem;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); cursor: pointer;
+  transition: all .2s;
+}
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--rose), var(--rose-light));
+  color: white; border-color: transparent;
+  box-shadow: 0 4px 16px rgba(200,88,108,.3);
+}
+
+/* ── UPLOAD BOX ── */
+.gallery-upload-box { background:var(--white); border-radius:20px; padding:2.5rem; box-shadow:0 4px 40px var(--shadow); margin-bottom:2.5rem; }
+.drop-zone { border:2px dashed var(--rose-light); border-radius:16px; padding:2.5rem 2rem; text-align:center; background:var(--blush); cursor:pointer; position:relative; transition:background .2s,border-color .2s; }
+.drop-zone:hover,.drop-zone.dragging { background:#fbd5e2; border-color:var(--rose); }
+.drop-zone input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+.drop-zone-icon { font-size:2.5rem; display:block; margin-bottom:.5rem; }
+.drop-zone h3 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; color:var(--text); }
+.drop-zone p { font-size:.82rem; color:var(--muted); margin-top:.3rem; }
+
+/* ── PHOTO MASONRY ── */
+.photo-gallery { columns:3; column-gap:1rem; }
+@media(max-width:640px){ .photo-gallery { columns:2; } }
+.photo-item { break-inside:avoid; margin-bottom:1rem; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 20px var(--shadow); cursor:pointer; animation:riseUp .4s ease; transition:transform .25s,box-shadow .25s; }
+.photo-item:hover { transform:translateY(-4px); box-shadow:0 10px 40px rgba(200,88,108,.2); }
+.photo-item img { width:100%; display:block; object-fit:cover; }
+.photo-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(61,26,36,.65) 0%,transparent 55%); opacity:0; transition:opacity .2s; display:flex; align-items:flex-end; padding:.8rem; }
+.photo-item:hover .photo-overlay { opacity:1; }
+.del-btn { background:rgba(255,255,255,.2); border:none; color:white; border-radius:50%; width:30px; height:30px; cursor:pointer; font-size:.85rem; backdrop-filter:blur(4px); margin-left:auto; }
+.gallery-empty { text-align:center; padding:3rem; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.2rem; color:var(--rose-light); }
+
+/* ── VIDEO GRID ── */
+.video-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:1.2rem; }
+.video-item { border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 20px var(--shadow); animation:riseUp .4s ease; background:#1a0810; }
+.video-item video { width:100%; display:block; max-height:320px; object-fit:cover; border-radius:16px; }
+.video-del { position:absolute; top:.6rem; right:.6rem; background:rgba(255,255,255,.15); border:none; color:white; border-radius:50%; width:30px; height:30px; cursor:pointer; font-size:.85rem; backdrop-filter:blur(4px); display:none; }
+.video-item:hover .video-del { display:flex; align-items:center; justify-content:center; }
+
+/* ── LIGHTBOX ── */
+#lightbox { position:fixed; inset:0; z-index:999; background:rgba(30,5,12,.92); display:none; align-items:center; justify-content:center; backdrop-filter:blur(10px); }
+#lightbox.open { display:flex; }
+#lightbox img { max-width:88vw; max-height:86vh; border-radius:14px; object-fit:contain; box-shadow:0 20px 80px rgba(0,0,0,.6); }
+#lightbox-close { position:absolute; top:1.5rem; right:1.5rem; background:rgba(255,255,255,.12); border:none; color:white; width:42px; height:42px; border-radius:50%; font-size:1.2rem; cursor:pointer; backdrop-filter:blur(4px); }
+#lightbox-prev,#lightbox-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.12); border:none; color:white; width:48px; height:48px; border-radius:50%; font-size:1.4rem; cursor:pointer; backdrop-filter:blur(4px); transition:background .2s; }
+#lightbox-prev:hover,#lightbox-next:hover { background:rgba(255,255,255,.25); }
+#lightbox-prev { left:1.5rem; } #lightbox-next { right:1.5rem; }
+
+/* ── MESSAGES ── */
+.msg-form { background:var(--white); border-radius:20px; padding:2.5rem; box-shadow:0 4px 40px var(--shadow); margin-bottom:2.5rem; }
+.form-row { margin-bottom:1.2rem; }
+label.field-label { display:block; font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:.5rem; }
+input[type=text],textarea { width:100%; border:1px solid #f0c0cc; border-radius:12px; padding:.85rem 1.1rem; font-family:'Jost',sans-serif; font-size:.95rem; font-weight:300; color:var(--text); background:var(--blush); outline:none; resize:none; transition:border .2s,box-shadow .2s; }
+input[type=text]:focus,textarea:focus { border-color:var(--rose); box-shadow:0 0 0 3px rgba(200,88,108,.1); }
+textarea { min-height:110px; }
+.btn-primary { display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 2.2rem; background:linear-gradient(135deg,var(--rose),var(--rose-light)); color:white; border:none; border-radius:50px; font-family:'Jost',sans-serif; font-size:.82rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 20px rgba(200,88,108,.3); transition:transform .2s,box-shadow .2s; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(200,88,108,.4); }
+.msgs-list { display:flex; flex-direction:column; gap:1rem; }
+.msg-card { background:var(--white); border-radius:16px; overflow:hidden; box-shadow:0 3px 20px var(--shadow); display:flex; animation:riseUp .4s ease; }
+.msg-card-accent { width:5px; background:linear-gradient(to bottom,var(--rose),var(--rose-light)); flex-shrink:0; }
+.msg-card-body { padding:1.3rem 1.5rem; }
+.msg-card-from { font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--rose); margin-bottom:.4rem; }
+.msg-card-text { font-family:'Cormorant Garamond',serif; font-size:1.1rem; line-height:1.7; color:var(--text); }
+footer { text-align:center; padding:4rem 2rem 5rem; border-top:1px solid var(--blush); background:radial-gradient(ellipse at 50% 100%,#fce0ea 0%,transparent 70%); }
+footer .f-icon { font-size:2.5rem; display:block; margin-bottom:.8rem; }
+footer .f-msg { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--muted); }
+footer .f-sig { font-size:.75rem; margin-top:.5rem; letter-spacing:2px; color:var(--rose-light); }
+#toast { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px); background:var(--rose); color:white; padding:.7rem 1.8rem; border-radius:50px; font-size:.82rem; letter-spacing:1px; transition:transform .3s ease; z-index:9999; box-shadow:0 4px 20px rgba(200,88,108,.4); pointer-events:none; }
+#toast.show { transform:translateX(-50%) translateY(0); }
+@media(max-width:600px){ .love-letter{padding:2rem 1.5rem;} .love-letter p{font-size:1.3rem;} .section{padding:3.5rem 1.2rem;} .nav-dots{display:none;} .media-tabs{flex-direction:column;} }
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<nav class="nav-dots">
+  <button class="nav-dot active" data-target="hero"></button>
+  <button class="nav-dot" data-target="msg-section"></button>
+  <button class="nav-dot" data-target="gallery-section"></button>
+  <button class="nav-dot" data-target="wishes-section"></button>
+</nav>
+
+<!-- HERO -->
+<div id="hero" class="hero">
+  <div class="hero-inner">
+    <p class="hero-date">🌸 &nbsp; A very special day &nbsp; 🌸</p>
+    <h1>Happy Birthday<em>MY RORO</em></h1>
+    <p class="hero-sub">Today and every day, you are truly cherished.</p>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    scroll
+  </div>
+</div>
+
+<!-- LOVE LETTER -->
+<div id="msg-section" class="sep">
+  <div class="section">
+    <p class="section-eyebrow">A message from the heart</p>
+    <h2 class="section-title">For <em>RORO</em>, with love</h2>
+    <div class="section-divider"></div>
+    <div class="love-letter">
+      <div class="love-letter-body">
+        <!-- ✏️ YOUR MESSAGE TO RORO -->
+        <p>مهانش عليا ولا يجيلي نوم يا حبيبة قلبي اعديلك عيد ميلادك من غير ما اعملك حاجه تبسطك بجد متعرفيش غلاوتك عندي قد ايه و لا اقدر على نقطة زعل منك و عايز دايما اشوفك مبسوطة.  و كان نفسي من قلبي والله اكون موجود عشان ابسطك و اخليه محصلش زيه بس نعوضها ان شاء الله العيد الميلاد الجاي و عقبال ما نحتفل بيه في بيتنا بعد كده.  كل سنه و انت طيبة يا صاحبتي و قلبي و مراتي و حياتي كلها  ربنا ميحرمنيش منك ابدا لان انا من غيرك بتوه توهان و هفضل احبك طول عمري يابت❤️❤️🎉</p>
+        <!-- ✏️ YOUR NAME -->
+        <div class="love-letter-sig">
+          <div class="sig-line"></div>
+          <span>— Abdulrahman Amer 🌹</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OUR STORY — PHOTOS & VIDEOS -->
+<div id="gallery-section" class="sep">
+  <div class="section">
+    <p class="section-eyebrow">Captured moments</p>
+    <h2 class="section-title"><em>Our Story</em></h2>
+    <div class="section-divider"></div>
+
+    <!-- TABS -->
+    <div class="media-tabs">
+      <button class="tab-btn active" onclick="switchTab('photos', this)">📷 &nbsp; Photos</button>
+      <button class="tab-btn" onclick="switchTab('videos', this)">🎥 &nbsp; Videos</button>
+    </div>
+
+    <!-- PHOTOS PANEL -->
+    <div id="panel-photos">
+      <div class="gallery-upload-box">
+        <div class="drop-zone" id="photo-drop">
+          <input type="file" id="photo-input" accept="image/*" multiple>
+          <span class="drop-zone-icon">📷</span>
+          <h3>Add photos to our story</h3>
+          <p>Click to select — or drag &amp; drop multiple photos at once</p>
+        </div>
+      </div>
+      <div class="photo-gallery" id="photo-gallery">
+        <div class="gallery-empty">Your beautiful moments together will live here 🌸</div>
+      </div>
+    </div>
+
+    <!-- VIDEOS PANEL -->
+    <div id="panel-videos" style="display:none;">
+      <div class="gallery-upload-box">
+        <div class="drop-zone" id="video-drop">
+          <input type="file" id="video-input" accept="video/*" multiple>
+          <span class="drop-zone-icon">🎥</span>
+          <h3>Add videos to our story</h3>
+          <p>Click to select — or drag &amp; drop multiple videos at once</p>
+        </div>
+      </div>
+      <div class="video-grid" id="video-grid">
+        <div class="gallery-empty" style="grid-column:1/-1">Your precious videos will live here 🎬</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BIRTHDAY WISHES -->
+<div id="wishes-section" class="sep">
+  <div class="section">
+    <p class="section-eyebrow">Birthday wishes</p>
+    <h2 class="section-title">Wishes for <em>RORO</em></h2>
+    <div class="section-divider"></div>
+    <div class="msg-form">
+      <div class="form-row">
+        <label class="field-label" for="msg-from">Your name</label>
+        <input type="text" id="msg-from" placeholder="e.g. Sarah, Mom, Your bestie…">
+      </div>
+      <div class="form-row">
+        <label class="field-label" for="msg-text">Your message</label>
+        <textarea id="msg-text" placeholder="Write something sweet for RORO on her special day…"></textarea>
+      </div>
+      <button class="btn-primary" onclick="addMessage()">✉️ &nbsp; Send with love</button>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         💌 SAVED WISHES — permanently shown
+         Copy the msg-card block to add more wishes.
+         ════════════════════════════════════════════════════ -->
+    <div class="msgs-list" id="msgs-list">
+
+      <!-- ✅ SAVED WISH #1 -->
+      <div class="msg-card">
+        <div class="msg-card-accent"></div>
+        <div class="msg-card-body">
+          <div class="msg-card-from">From: Abdulrahman Amer</div>
+          <div class="msg-card-text">ان شاء الله اششوفك مبسوطة طول حياتك و مرتاحة و متشوفيش وحش و تخلصي جامعة و تتخرجب و افرح بيكي و اقول المهندسة بتاعتي اهي و ان شاء الله ربنا ييسر لينا جوازنا و يبقى لينا بيتنا بتاعنا و نبنيه سوا سوا و الفترة اللي جاية في حياتنا تعدي على خير</div>
+        </div>
+      </div>
+
+      <!-- ✅ ADD MORE SAVED WISHES HERE — copy the block above -->
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-icon">🌹</span>
+  <p class="f-msg">Made with all my love, just for you RORO</p>
+  <p class="f-sig">— Abdulrahman Amer</p>
+</footer>
+
+<!-- LIGHTBOX (photos only) -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button id="lightbox-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next" onclick="lbNav(1)">›</button>
+</div>
+
+<div id="toast"></div>
+
+<script>
+
+/* ════════════════════════════════════════════════════════════
+   📷 BUILT-IN PHOTOS
+   Put your photo files in the SAME folder as this HTML file,
+   then add their filenames below like this:
+   { src: "photo1.jpg" },
+   { src: "photo2.jpg" },
+   ════════════════════════════════════════════════════════════ */
+const builtInPhotos = [
+  // ✅ ADD YOUR PHOTOS HERE:
+  { src: "hug.jpeg" },
+  { src: "iftar.jpeg" },
+   { src: "hmmirror.jpeg" },
+      { src: "mirror.jpeg" },
+      { src: "eyes.jpg" },
+      { src: "fool.jpeg" },
+      { src: "first.jpg" },
+      { src: "kids.jpg" },
+      { src: "hands.jpg" },
+      { src: "filter.jpeg" },
+      { src: "cenima.jpeg" },
+      {src: "zaoraself.jpeg"},
+      {src: "nails.jpg"}
+      
+
+      
+
+];
+
+/* ════════════════════════════════════════════════════════════
+   🎥 BUILT-IN VIDEOS
+   Put your video files in the SAME folder as this HTML file,
+   then add their filenames below like this:
+   { src: "video1.mp4" },
+   { src: "video2.mp4" },
+   Supported formats: .mp4 .webm .mov .ogg
+   ════════════════════════════════════════════════════════════ */
+const builtInVideos = [
+  // ✅ ADD YOUR VIDEOS HERE:
+  { src: "billiard.mp4" },
+  { src: "global.mp4" },
+  { src: "iftar2.mp4" },
+  { src: "hat.mp4" },
+  { src: "qasba.mp4" },
+  { src: "marsa.mp4" },
+  { src: "zaorah.mp4" },
+  { src: "hotel.mp4" },
+  // { src: "video3.mov" },
+];
+/* ════════════════════════════════════════════════════════════ */
+
+
+/* ── PETALS ── */
+const emojiPool = ['🌸','🌺','🌷','🌹','💮','🪷'];
+const petalWrap = document.getElementById('petals');
+for (let i = 0; i < 22; i++) {
+  const el = document.createElement('div');
+  el.className = 'petal';
+  el.textContent = emojiPool[Math.floor(Math.random() * emojiPool.length)];
+  el.style.cssText = `left:${Math.random()*100}vw;font-size:${.7+Math.random()*1.1}rem;animation-duration:${7+Math.random()*12}s;animation-delay:${Math.random()*14}s;`;
+  petalWrap.appendChild(el);
+}
+
+/* ── NAV DOTS ── */
+const sectionIds = ['hero','msg-section','gallery-section','wishes-section'];
+const dots = document.querySelectorAll('.nav-dot');
+dots.forEach((d, i) => d.addEventListener('click', () =>
+  document.getElementById(sectionIds[i]).scrollIntoView({ behavior:'smooth' })
+));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = sectionIds.indexOf(e.target.id);
+      dots.forEach(d => d.classList.remove('active'));
+      if (idx >= 0) dots[idx].classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sectionIds.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+
+/* ── TOAST ── */
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ── TABS ── */
+function switchTab(tab, btn) {
+  document.getElementById('panel-photos').style.display = tab === 'photos' ? 'block' : 'none';
+  document.getElementById('panel-videos').style.display = tab === 'videos' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* ── PHOTOS ── */
+let photos = [...builtInPhotos];
+let lbIdx = 0;
+
+const photoDropZone = document.getElementById('photo-drop');
+const photoInput    = document.getElementById('photo-input');
+
+renderGallery();
+
+photoInput.addEventListener('change', e => handlePhotos(e.target.files));
+photoDropZone.addEventListener('dragover',  e => { e.preventDefault(); photoDropZone.classList.add('dragging'); });
+photoDropZone.addEventListener('dragleave', () => photoDropZone.classList.remove('dragging'));
+photoDropZone.addEventListener('drop', e => {
+  e.preventDefault(); photoDropZone.classList.remove('dragging');
+  handlePhotos(e.dataTransfer.files);
+});
+
+function handlePhotos(files) {
+  const arr = Array.from(files).filter(f => f.type.startsWith('image/'));
+  if (!arr.length) { toast('Please select image files 🌸'); return; }
+  let loaded = 0;
+  arr.forEach(file => {
+    const r = new FileReader();
+    r.onload = ev => {
+      photos.push({ src: ev.target.result });
+      loaded++;
+      if (loaded === arr.length) renderGallery();
+    };
+    r.readAsDataURL(file);
+  });
+  toast(`${arr.length} photo${arr.length > 1 ? 's' : ''} added 📷`);
+  photoInput.value = '';
+}
+
+function renderGallery() {
+  const g = document.getElementById('photo-gallery');
+  if (!photos.length) {
+    g.innerHTML = '<div class="gallery-empty">Your beautiful moments together will live here 🌸</div>';
+    return;
+  }
+  g.innerHTML = photos.map((p, i) => `
+    <div class="photo-item" onclick="openLb(${i})">
+      <img src="${p.src}" alt="Memory ${i+1}" loading="lazy">
+      <div class="photo-overlay">
+        <button class="del-btn" onclick="event.stopPropagation();delPhoto(${i})">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function delPhoto(i) { photos.splice(i, 1); renderGallery(); toast('Photo removed'); }
+
+/* ── LIGHTBOX ── */
+function openLb(i) {
+  lbIdx = i;
+  document.getElementById('lightbox-img').src = photos[i].src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+function lbNav(dir) {
+  lbIdx = (lbIdx + dir + photos.length) % photos.length;
+  document.getElementById('lightbox-img').src = photos[lbIdx].src;
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft')  lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'Escape')     closeLightbox();
+});
+
+/* ── VIDEOS ── */
+let videos = [...builtInVideos];
+
+const videoDropZone = document.getElementById('video-drop');
+const videoInput    = document.getElementById('video-input');
+
+renderVideos();
+
+videoInput.addEventListener('change', e => handleVideos(e.target.files));
+videoDropZone.addEventListener('dragover',  e => { e.preventDefault(); videoDropZone.classList.add('dragging'); });
+videoDropZone.addEventListener('dragleave', () => videoDropZone.classList.remove('dragging'));
+videoDropZone.addEventListener('drop', e => {
+  e.preventDefault(); videoDropZone.classList.remove('dragging');
+  handleVideos(e.dataTransfer.files);
+});
+
+function handleVideos(files) {
+  const arr = Array.from(files).filter(f => f.type.startsWith('video/'));
+  if (!arr.length) { toast('Please select video files 🎥'); return; }
+  let loaded = 0;
+  arr.forEach(file => {
+    const r = new FileReader();
+    r.onload = ev => {
+      videos.push({ src: ev.target.result });
+      loaded++;
+      if (loaded === arr.length) renderVideos();
+    };
+    r.readAsDataURL(file);
+  });
+  toast(`${arr.length} video${arr.length > 1 ? 's' : ''} added 🎥`);
+  videoInput.value = '';
+}
+
+function renderVideos() {
+  const g = document.getElementById('video-grid');
+  if (!videos.length) {
+    g.innerHTML = '<div class="gallery-empty" style="grid-column:1/-1">Your precious videos will live here 🎬</div>';
+    return;
+  }
+  g.innerHTML = videos.map((v, i) => `
+    <div class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="${v.src}">
+        Your browser does not support video.
+      </video>
+      <button class="video-del" onclick="delVideo(${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function delVideo(i) { videos.splice(i, 1); renderVideos(); toast('Video removed'); }
+
+/* ── MESSAGES ── */
+let messages = [];
+function addMessage() {
+  const from = document.getElementById('msg-from').value.trim();
+  const text = document.getElementById('msg-text').value.trim();
+  if (!text) { toast('Please write a message 💌'); return; }
+  messages.push({ from: from || 'Anonymous', text });
+  renderMessages();
+  document.getElementById('msg-from').value = '';
+  document.getElementById('msg-text').value = '';
+  toast('Wish sent with love 💕');
+}
+function renderMessages() {
+  document.querySelectorAll('#msgs-list .dynamic-msg').forEach(el => el.remove());
+  messages.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'msg-card dynamic-msg';
+    card.innerHTML = `
+      <div class="msg-card-accent"></div>
+      <div class="msg-card-body">
+        <div class="msg-card-from">From: ${esc(m.from)}</div>
+        <div class="msg-card-text">${esc(m.text)}</div>
+      </div>`;
+    document.getElementById('msgs-list').appendChild(card);
+  });
+}
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
